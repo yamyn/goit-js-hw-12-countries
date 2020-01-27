@@ -16,21 +16,20 @@ const nameValid = {
   ONECOUNTRYVIEW: 1,
 };
 
-refs.form.addEventListener(
-  'input',
-  debounce(event => countryNameHandler(event), 500),
-);
-
-console.dir(refs.form);
+refs.form.addEventListener('input', debounce(countryNameHandler, 500));
 
 function countryNameHandler(event) {
   console.log(event);
+
   const searchQuery = event.target.value;
+
   console.log(searchQuery);
+
   if (!searchQuery) {
     clearWeatherList();
     return;
   }
+  console.log(event);
   countryService.fethSearchCountry(searchQuery).then(data => {
     if (data.length > nameValid.MAXVIEWCOUNTRY) {
       clearWeatherList();
