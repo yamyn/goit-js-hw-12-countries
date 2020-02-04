@@ -6,3 +6,6 @@ export default {
     return fetch(baseUrl + requestParams).then(response => response.json());
   },
 };
+
+
+//comment for example
